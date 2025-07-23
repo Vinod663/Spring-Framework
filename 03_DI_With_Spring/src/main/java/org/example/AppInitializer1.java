@@ -15,12 +15,12 @@ public class AppInitializer1 {
         context.register(AppConfig.class);
         context.refresh();
 
-        /*Boy boy = context.getBean(Boy.class);
-        boy.chatWithGirl();*/
+        Boy boy = context.getBean(Boy.class);
+        boy.chatWithGirl();
 
-        Test2 test2 = context.getBean(Test2.class);
-        /*test2.sayHello();*/
-        test2.test();
+        /*Test2 test2 = context.getBean(Test2.class);
+        *//*test2.sayHello();*//*
+        test2.test();*/
 
 
         context.registerShutdownHook();

@@ -6,10 +6,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-/*@ComponentScan(basePackages = "org.example.bean")*/
+@ComponentScan(basePackages = "org.example.bean")
 public class AppConfig2 {
-    @Bean
+    /*@Bean
     public SpringBeanTwo springBeanTwo() {
         return new SpringBeanTwo();
-    }
+    }*/
 }

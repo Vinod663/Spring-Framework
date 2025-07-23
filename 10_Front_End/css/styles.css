@@ -1,0 +1,42 @@
+body {
+    background-color: #f8f9fa;
+}
+.container {
+    max-width: 900px;
+}
+.card {
+    border: none;
+}
+.card-header,
+.card-body {
+    padding: 1.5rem;
+}
+.badge-status {
+    min-width: 80px;
+}
+
+/*// Table style for clicked rows*/
+.jobsTable tbody tr {
+    cursor: pointer;
+}
+
+#jobsTable tbody tr td.table-active {
+    background-color: #41f872 !important;
+    color: #000 !important; /* Optional: ensure good contrast */
+}
+
+#jobsTable tbody tr:hover td {
+    background-color: #d8ffe0; /* very light blue */
+}
+
+
+
+.bg-box{
+    margin-top: 2rem;
+    background-color: #eff3f7 !important;
+}
+.qk-actions{
+    margin-top: 20px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
