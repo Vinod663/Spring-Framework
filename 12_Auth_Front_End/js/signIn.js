@@ -18,9 +18,10 @@ $("#signInBtn").click(function(event) {
             alert("Login successful!\nResponse from server: " + response.message);
             // Store the JWT token in localStorage
             console.log(response.data.accessToken);
-            if (!localStorage.getItem("accessToken")) {
+
+                localStorage.removeItem("accessToken");
                 localStorage.setItem("accessToken", response.data.accessToken);
-            }
+
             window.location.href = "dashboard.html";// Redirect to the main page
         },
         error: function(response) {

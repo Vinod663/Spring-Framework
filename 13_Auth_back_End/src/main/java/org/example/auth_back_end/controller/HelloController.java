@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/hello")
-@CrossOrigin("*")
+@CrossOrigin("*")//added by me
 public class HelloController {
     // This controller is used to test the application
     // It returns a simple message when accessed
