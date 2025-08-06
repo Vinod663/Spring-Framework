@@ -49,3 +49,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+//Logout Btn --> Remove Token and Refresh
+$("#logoutBtn").click(function () {
+    localStorage.removeItem("accessToken");
+    location.reload();
+
+})
+
