@@ -3,6 +3,8 @@ package org.example.back_end.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.example.back_end.dto.JobDto;
 import org.example.back_end.entity.Job;
+import org.example.back_end.exception.ResourceFoundException;
+import org.example.back_end.exception.ResourceNotFoundException;
 import org.example.back_end.repository.JobRepository;
 import org.example.back_end.service.JobService;
 import org.modelmapper.ModelMapper;
@@ -20,17 +22,29 @@ public class JobServiceImpl implements JobService {
     /*@Transactional*/// This annotation is used to manage transactions, ensuring that the method is executed within a transaction context.
     @Override
     public void saveJob(JobDto jobDto) {
+        if (jobDto.getId() != null && jobRepository.existsById(jobDto.getId())) {
+            throw new ResourceFoundException("Job already exists with id: " + jobDto.getId());//Custom Exception
+        }
         jobRepository.save(modelMapper.map(jobDto, Job.class));//mee save method eka enne CrudRepository interface ekn
     }
 
     @Override
     public void updateJob(JobDto jobDto) {
+        List<Job> jobs = jobRepository.findAllById(List.of(jobDto.getId()));//findAllById method returns a list of jobs with the given id
+        if(jobs.isEmpty()) {
+            throw new ResourceNotFoundException("No jobs found to update");//Custom Exception
+        }//if eke awlak tiyenne
         jobRepository.save(modelMapper.map(jobDto, Job.class));
     }
 
     @Override
     public List<JobDto> getAllJobs() {
         List<Job> allJobs = jobRepository.findAll();
+        /*throw new RuntimeException("Exception Thrown");*/
+        if (allJobs.isEmpty()) {
+            throw new ResourceNotFoundException("No jobs found");//Custom Exception
+        }
+        /*throw new ResourceNotFoundException("No jobs found");*///to check GlobalExceptionHandler
         return modelMapper.map(allJobs, new TypeToken<List<JobDto>>() {}.getType());
     }
 
@@ -56,7 +70,7 @@ public class JobServiceImpl implements JobService {
         if (jobRepository.existsById(id)) {
             jobRepository.deleteById(id);
         } else {
-            throw new RuntimeException("Job not found with id: " + id);
+            throw new ResourceNotFoundException("No jobs found to delete with id: " + id);//Custom Exception
         }
     }
 }

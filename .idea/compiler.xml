@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -11,6 +12,7 @@
         <module name="03_DI_With_Spring" />
         <module name="08_Spring_Web_MVC" />
         <module name="Back_End" />
+        <module name="Auth_back_End" />
         <module name="05_Configuration" />
         <module name="Multi_Configuration" />
         <module name="09_REST_Controllers" />
@@ -22,10 +24,13 @@
     <bytecodeTargetLevel>
       <module name="05_Confurations" target="1.8" />
       <module name="10_Front_End" target="17" />
+      <module name="12_Front_End" target="17" />
+      <module name="13_Auth_Backend" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Auth_back_End" options="-parameters" />
       <module name="Back_End" options="-parameters" />
     </option>
   </component>

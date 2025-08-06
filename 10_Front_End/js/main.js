@@ -50,7 +50,8 @@ function loadJobsTable() {
     $.ajax({
         url: 'http://localhost:8080/api/v1/job/getAll',
         type: 'GET',
-        success: function (jobs) {
+        success: function (response) {
+            let jobs = response.data; // Assuming the response has a 'data' field containing the jobs
             let tableBody = $('#jobsTable tbody');
             tableBody.empty();
             jobs.forEach(job => {
@@ -110,7 +111,8 @@ $('#jobsTable').on('click', '.edit-btn', function () {
     $.ajax({
         url: 'http://localhost:8080/api/v1/job/get/' + $(this).data('id'),
         type: 'GET',
-        success: function (job) {
+        success: function (response) {
+            let job = response.data; // Assuming the response has a 'data' field containing the job details
             $('#editJobTitle').val(job.jobTitle);
             $('#editCompanyName').val(job.company);
             $('#editJobLocation').val(job.location);
@@ -207,7 +209,8 @@ $('#searchInput').on('keyup', function() {
     $.ajax({
        url: 'http://localhost:8080/api/v1/job/search/'+ keyword,
        type: 'GET',
-         success: function(jobs) {
+         success: function(response) {
+           let jobs = response.data; // Assuming the response has a 'data' field containing the jobs
            if (jobs.length > 0) {
                let tableBody = $('#jobsTable tbody');
                tableBody.empty();
